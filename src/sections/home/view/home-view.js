@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 export default function HomeView() {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate('/dashboard');
+    navigate('/dashboard/banking');
   }, []);
   return <></>;
 }

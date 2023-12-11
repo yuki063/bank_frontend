@@ -32,5 +32,9 @@ export const endpoints = {
     verify: 'auth/verifycode',
     registerByGoogle: 'auth/registerByGoogle',
     loginByGoogle: 'auth/loginByGoogle',
+    resetPassword: 'auth/resetPassword',
+    resendCode: 'auth/resendCode',
+    IBAN: 'auth/iban',
+    transfer: 'auth/transfer',
   },
 };

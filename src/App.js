@@ -53,40 +53,47 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 // ----------------------------------------------------------------------
 
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+const stripePromise = loadStripe(
+  'pk_test_51OKw5bDgDmJR6QyjIBFJMVXAbiRZXNw3qNdC8eNOgs7m2AMl94htlAzxAClsJBSd0GvoySo46AvaApvqZV5gbWjU00RtckNl0K'
+);
 export default function App() {
   useScrollToTop();
 
   return (
-    <GoogleOAuthProvider clientId="439264173877-rlns0qqm3bbnea8dr1gb2kh9s8j3kcng.apps.googleusercontent.com">
-      <AuthProvider>
-        <ToastContainer />
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <SettingsProvider
-            defaultSettings={{
-              themeMode: 'light', // 'light' | 'dark'
-              themeDirection: 'ltr', //  'rtl' | 'ltr'
-              themeContrast: 'default', // 'default' | 'bold'
-              themeLayout: 'vertical', // 'vertical' | 'horizontal' | 'mini'
-              themeColorPresets: 'default', // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
-              themeStretch: false,
-            }}
-          >
-            <ThemeProvider>
-              <MotionLazy>
-                <SnackbarProvider>
-                  <CheckoutProvider>
-                    <SettingsDrawer />
-                    <ProgressBar />
-                    <AuthConsumer>
-                      <Router />
-                    </AuthConsumer>
-                  </CheckoutProvider>
-                </SnackbarProvider>
-              </MotionLazy>
-            </ThemeProvider>
-          </SettingsProvider>
-        </LocalizationProvider>
-      </AuthProvider>
-    </GoogleOAuthProvider>
+    <Elements stripe={stripePromise}>
+      <GoogleOAuthProvider clientId="439264173877-rlns0qqm3bbnea8dr1gb2kh9s8j3kcng.apps.googleusercontent.com">
+        <AuthProvider>
+          <ToastContainer />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <SettingsProvider
+              defaultSettings={{
+                themeMode: 'light', // 'light' | 'dark'
+                themeDirection: 'ltr', //  'rtl' | 'ltr'
+                themeContrast: 'default', // 'default' | 'bold'
+                themeLayout: 'vertical', // 'vertical' | 'horizontal' | 'mini'
+                themeColorPresets: 'default', // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
+                themeStretch: false,
+              }}
+            >
+              <ThemeProvider>
+                <MotionLazy>
+                  <SnackbarProvider>
+                    <CheckoutProvider>
+                      <SettingsDrawer />
+                      <ProgressBar />
+                      <AuthConsumer>
+                        <Router />
+                      </AuthConsumer>
+                    </CheckoutProvider>
+                  </SnackbarProvider>
+                </MotionLazy>
+              </ThemeProvider>
+            </SettingsProvider>
+          </LocalizationProvider>
+        </AuthProvider>
+      </GoogleOAuthProvider>
+    </Elements>
   );
 }

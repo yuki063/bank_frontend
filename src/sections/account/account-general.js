@@ -43,7 +43,8 @@ export default function AccountGeneral() {
     state: Yup.string().required('State is required'),
     city: Yup.string().required('City is required'),
     zipCode: Yup.string().required('Zip code is required'),
-    about: Yup.string().required('About is required'),
+    // cardNumber: Yup.string().required('Card Number is required'),
+    // about: Yup.string().required('About is required'),
     // not required
     isPublic: Yup.boolean(),
   });
@@ -58,9 +59,11 @@ export default function AccountGeneral() {
     state: user?.state || '',
     city: user?.city || '',
     zipCode: user?.zipCode || '',
-    about: user?.about || '',
+    // cardNumber: user?.cardNumber || '',
+    // about: user?.about || '',
     isPublic: user?.isPublic || false,
   };
+  const defaultValue = '1111 1111 1111 1111';
 
   const methods = useForm({
     resolver: yupResolver(UpdateUserSchema),
@@ -152,7 +155,6 @@ export default function AccountGeneral() {
               <RHFTextField name="email" label="Email Address" />
               <RHFTextField name="phoneNumber" label="Phone Number" />
               <RHFTextField name="address" label="Address" />
-
               <RHFAutocomplete
                 name="country"
                 label="Country"
@@ -180,14 +182,33 @@ export default function AccountGeneral() {
                   );
                 }}
               />
-
               <RHFTextField name="state" label="State/Region" />
               <RHFTextField name="city" label="City" />
-              <RHFTextField name="zipCode" label="Zip/Code" />
+              <RHFTextField name="zipCode" label="Zip/Code" />{' '}
+            </Box>
+            <Box
+              rowGap={1}
+              columnGap={1}
+              display="grid"
+              gridTemplateColumns={{
+                xs: 'repeat(1, 1fr)',
+                sm: 'repeat(1, 1fr)',
+              }}
+              sx={{ mt: 3 }}
+            >
+              <Typography variant="body1" fontWeight="bold">
+                Card Number:
+              </Typography>
+              <RHFTextField
+                name="card"
+                // label="Card Number:"
+                value={defaultValue}
+                disabled
+              />
             </Box>
 
             <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>
-              <RHFTextField name="about" multiline rows={4} label="About" />
+              {/* <RHFTextField name="about" multiline rows={4} label="About" /> */}
 
               <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
                 Save Changes

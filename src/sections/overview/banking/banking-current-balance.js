@@ -107,7 +107,7 @@ function CardItem({ card }) {
   return (
     <>
       <Stack justifyContent="space-between" sx={{ height: 1, p: 3 }}>
-        <IconButton
+        {/* <IconButton
           color="inherit"
           onClick={popover.onOpen}
           sx={{
@@ -122,7 +122,7 @@ function CardItem({ card }) {
           }}
         >
           <Iconify icon="eva:more-vertical-fill" />
-        </IconButton>
+        </IconButton> */}
 
         <div>
           <Typography sx={{ mb: 2, typography: 'subtitle2', opacity: 0.48 }}>
@@ -161,7 +161,7 @@ function CardItem({ card }) {
           {cardNumber}
         </Stack>
 
-        <Stack direction="row" spacing={5}>
+        {/* <Stack direction="row" spacing={5}>
           <Stack spacing={1}>
             <Typography sx={{ typography: 'caption', opacity: 0.48 }}>Card Holder</Typography>
             <Typography sx={{ typography: 'subtitle1' }}>{cardHolder}</Typography>
@@ -170,11 +170,11 @@ function CardItem({ card }) {
             <Typography sx={{ typography: 'caption', opacity: 0.48 }}>Valid Dates</Typography>
             <Typography sx={{ typography: 'subtitle1' }}>{cardValid}</Typography>
           </Stack>
-        </Stack>
+        </Stack> */}
       </Stack>
 
-      <CustomPopover open={popover.open} onClose={popover.onClose} sx={{ width: 140 }}>
-        <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
+      {/* <CustomPopover open={popover.open} onClose={popover.onClose} sx={{ width: 140 }}> */}
+      {/* <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
           <Iconify icon="solar:trash-bin-trash-bold" />
           Delete
         </MenuItem>
@@ -182,8 +182,8 @@ function CardItem({ card }) {
         <MenuItem onClick={handleEdit}>
           <Iconify icon="solar:pen-bold" />
           Edit
-        </MenuItem>
-      </CustomPopover>
+        </MenuItem> */}
+      {/* </CustomPopover> */}
     </>
   );
 }

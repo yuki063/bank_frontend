@@ -37,18 +37,18 @@ export const dashboardRoutes = [
       </AuthGuard>
     ),
     children: [
-      { element: <IndexPage />, index: true },
+      // { element: <IndexPage />, index: true },
       { path: 'banking', element: <OverviewBankingPage /> },
-      {
-        path: 'invoice',
-        children: [
-          { element: <InvoiceListPage />, index: true },
-          { path: 'list', element: <InvoiceListPage /> },
-          { path: ':id', element: <InvoiceDetailsPage /> },
-          { path: ':id/edit', element: <InvoiceEditPage /> },
-          { path: 'new', element: <InvoiceCreatePage /> },
-        ],
-      },
+      // {
+      //   path: 'invoice',
+      //   children: [
+      //     { element: <InvoiceListPage />, index: true },
+      //     { path: 'list', element: <InvoiceListPage /> },
+      //     { path: ':id', element: <InvoiceDetailsPage /> },
+      //     { path: ':id/edit', element: <InvoiceEditPage /> },
+      //     { path: 'new', element: <InvoiceCreatePage /> },
+      //   ],
+      // },
       {
         path: 'user',
         children: [{ path: 'account', element: <UserAccountPage /> }],

@@ -53,37 +53,37 @@ export function useNavData() {
     {
       subheader: t('Automation'),
       items: [
-        {
-          title: t('dashboard'),
-          path: paths.dashboard.root,
-          icon: ICONS.dashboard,
-        },
+        // {
+        //   title: t('dashboard'),
+        //   path: paths.dashboard.root,
+        //   icon: ICONS.dashboard,
+        // },
         {
           title: t('banking'),
           path: paths.dashboard.general.banking,
           icon: ICONS.banking,
         },
-        {
-          title: t('invoice'),
-          path: paths.dashboard.invoice.root,
-          icon: ICONS.invoice,
-          children: [
-            { title: t('list'), path: paths.dashboard.invoice.root },
-            {
-              title: t('details'),
-              path: paths.dashboard.invoice.demo.details,
-            },
-            { title: t('create'), path: paths.dashboard.invoice.new },
-            { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
-          ],
-        },
+        // {
+        //   title: t('invoice'),
+        //   path: paths.dashboard.invoice.root,
+        //   icon: ICONS.invoice,
+        //   children: [
+        //     { title: t('list'), path: paths.dashboard.invoice.root },
+        //     {
+        //       title: t('details'),
+        //       path: paths.dashboard.invoice.demo.details,
+        //     },
+        //     { title: t('create'), path: paths.dashboard.invoice.new },
+        //     { title: t('edit'), path: paths.dashboard.invoice.demo.edit },
+        //   ],
+        // },
       ],
     },
 
     // MANAGEMENT
     // ----------------------------------------------------------------------
     {
-      subheader: t('adminstration'),
+      subheader: t('administration'),
       items: [
         // USER
         {

@@ -49,6 +49,9 @@
   "only_admin_can_see_this_item": "Chỉ admin mới có thể thấy mục này",
   "upgrade_to_pro": "Nâng cấp lên phiên bản Pro",
   "dashboard" : "bảng điều khiển",
+  "Automation": "Tự động hóa",
+  "administration": "sự quản lý",
+  "users": "người dùng",
   "demo": {
     "title": "Vietnamese"
   }

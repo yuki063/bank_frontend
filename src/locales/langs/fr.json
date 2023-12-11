@@ -49,6 +49,9 @@
   "only_admin_can_see_this_item": "Seul l'administrateur peut voir cet élément",
   "upgrade_to_pro": "Passer à la version Pro",
   "dashboard" : "tableau de bord",
+  "Automation": "Automatisation",
+  "administration": "administration",
+  "users": "utilisateur",
   "demo": {
     "title": "France"
   }

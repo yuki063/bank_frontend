@@ -14,11 +14,20 @@ import Iconify from 'src/components/iconify';
 import { useSnackbar } from 'src/components/snackbar';
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
+import axios, { endpoints } from 'src/utils/axios';
+
+// Importing toastify module
+import { toast } from 'react-toastify';
+// Import toastify css file
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useCookies } from 'react-cookie';
 // ----------------------------------------------------------------------
 
 export default function AccountChangePassword() {
   const { enqueueSnackbar } = useSnackbar();
 
+  const [cookies, setCookie] = useCookies(['token']);
   const password = useBoolean();
 
   const ChangePassWordSchema = Yup.object().shape({
@@ -37,7 +46,6 @@ export default function AccountChangePassword() {
   const defaultValues = {
     oldPassword: '',
     newPassword: '',
-    confirmNewPassword: '',
   };
 
   const methods = useForm({
@@ -53,12 +61,27 @@ export default function AccountChangePassword() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      enqueueSnackbar('Update success!');
-      console.info('DATA', data);
+      const oldpassword = data['oldPassword'];
+      const newpassword = data['newPassword'];
+      const token = cookies?.token;
+      console.log(token);
+      const response = await axios.post(endpoints.auth.resetPassword, {
+        oldPassword: oldpassword,
+        newPassword: newpassword,
+        token: token,
+      });
+      const res_data = response.data;
+      if (res_data['user'] == undefined) {
+        toast.error(res_data['msg']);
+      } else {
+        setCookie('token', res_data['user']);
+        toast.success('Login Succcessful!');
+        document.location.href = '/';
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      reset();
+      setErrorMsg(typeof error === 'string' ? error : error.message);
     }
   });
 

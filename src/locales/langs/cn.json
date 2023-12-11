@@ -49,6 +49,9 @@
   "only_admin_can_see_this_item": "只有管理员可以看到此项目",
   "upgrade_to_pro": "升级到专业版",
   "dashboard": "仪表板",
+  "Automation": "自动化",
+  "administration": "行政",
+  "users": "用户",
   "demo": {
     "title": "Chinese"
   }

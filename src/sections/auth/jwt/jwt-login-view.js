@@ -109,8 +109,6 @@ export default function JwtLoginView() {
           setCookie('token', res_data['token']);
           toast.success('Login Succcessful!');
           document.location.href = '/';
-          // const route = {path: '/pages',};
-          // path: paths.dashboard.general.app;
         }
       }
     } catch (error) {

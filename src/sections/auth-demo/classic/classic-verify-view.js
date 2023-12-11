@@ -29,7 +29,18 @@ export default function ClassicVerifyView(props) {
   const VerifySchema = Yup.object().shape({
     code: Yup.string().min(6, 'Code must be at least 6 characters').required('Code is required'),
   });
-
+  const resendCode = async () => {
+    const response = await axios.post(endpoints.auth.resendCode, {
+      email: email,
+    });
+    console.log(response.data);
+    if (res_data.msg === 'success') {
+      toast.success('Successed Create Accout!');
+      document.location.href = '/';
+    } else {
+      toast.error(res_data['msg']);
+    }
+  };
   const defaultValues = {
     code: '',
     // email: '',
@@ -65,9 +76,9 @@ export default function ClassicVerifyView(props) {
       });
       console.log(response.data);
       const res_data = response.data;
-      localStorage.setItem('userInfo', JSON.stringify(data));
       if (res_data.msg === 'success') {
         toast.success('Successed Create Accout!');
+        document.location.href = '/';
       } else {
         toast.error(res_data['msg']);
         // toast.error('User exists already');
@@ -98,6 +109,7 @@ export default function ClassicVerifyView(props) {
           sx={{
             cursor: 'pointer',
           }}
+          onClick={resendCode}
         >
           Resend code
         </Link>
@@ -127,8 +139,8 @@ export default function ClassicVerifyView(props) {
         <Typography variant="h4">Please check your email!</Typography>
 
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          We have emailed a 6-digit confirmation code to acb@domain, please enter the code in below
-          box to verify your email.
+          We have emailed a 6-digit confirmation code to {email}, please enter the code in below box
+          to verify your email.
         </Typography>
       </Stack>
     </>
